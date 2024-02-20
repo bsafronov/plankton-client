@@ -6,6 +6,7 @@ import { ErrorPage } from "~/pages/error";
 import { HomePage } from "~/pages/page";
 import { SignInPage } from "~/pages/auth/sign-in/page";
 import { SignUpPage } from "~/pages/auth/sign-up/page";
+import { ShowcasePage } from "~/pages/showcase/page";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,16 @@ export const router = createBrowserRouter([
           {
             path: "/processes",
             element: <div>Processes</div>,
+          },
+        ],
+      },
+      {
+        path: "/showcase",
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "/showcase",
+            element: <ShowcasePage />,
           },
         ],
       },

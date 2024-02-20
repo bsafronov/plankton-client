@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { CCard } from "~/shared/components/card";
+import { Link } from "~/shared/ui/link";
 
 type Props = {
   type: "sign-in" | "sign-up";
@@ -19,9 +19,7 @@ const SignUpFooter = () => {
   return (
     <>
       Не зарегистрированы?&nbsp;
-      <Link to={"/auth/sign-up"} className="text-blue-500">
-        Регистрация
-      </Link>
+      <Link to={"/auth/sign-up"}>Регистрация</Link>
     </>
   );
 };
@@ -30,9 +28,7 @@ const SignInFooter = () => {
   return (
     <>
       Уже зарегистрированы?&nbsp;
-      <Link to={"/auth/sign-in"} className="text-blue-500">
-        Войти
-      </Link>
+      <Link to={"/auth/sign-in"}>Войти</Link>
     </>
   );
 };

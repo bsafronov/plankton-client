@@ -9,6 +9,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Checkbox } from "../ui/checkbox";
+import { InputMask } from "../ui/input-mask";
 
 type FormFieldType = "text" | "password" | "checkbox" | "tel";
 type FormField<T extends FieldValues> = ControllerRenderProps<T, Path<T>>;
@@ -56,5 +57,5 @@ const formFields: Record<
   checkbox: ({ onChange, value, ...props }) => (
     <Checkbox onCheckedChange={onChange} checked={value} {...props} />
   ),
-  tel: (field) => <Input {...field} />,
+  tel: (field) => <InputMask {...field} mask={"+7 (999) 999-99-99"} />,
 };

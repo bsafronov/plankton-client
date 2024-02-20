@@ -4,8 +4,9 @@ type Props = {
   isAuth: boolean;
   accessToken: string | null;
   refreshToken: string | null;
+  login: (tokens: TokensProps) => void;
+  refresh: (tokens: TokensProps) => void;
   logout: () => void;
-  refresh: (tokens: RefreshProps) => void;
 } & (AuthorizedProps | UnauthorizedProps);
 
 type AuthorizedProps = {
@@ -20,7 +21,7 @@ type UnauthorizedProps = {
   refreshToken: null;
 };
 
-type RefreshProps = {
+type TokensProps = {
   accessToken: string;
   refreshToken: string;
 };
@@ -36,9 +37,15 @@ const authState: StateCreator<Props> = (set) => ({
       refreshToken: null,
     });
   },
-  refresh: ({ accessToken, refreshToken }) => {
+  login: ({ accessToken, refreshToken }) => {
     set({
       isAuth: true,
+      accessToken,
+      refreshToken,
+    });
+  },
+  refresh: ({ accessToken, refreshToken }) => {
+    set({
       accessToken,
       refreshToken,
     });

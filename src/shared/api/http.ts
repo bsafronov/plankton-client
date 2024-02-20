@@ -1,21 +1,21 @@
 import axios from "axios";
 import { useAuthStore } from "../hooks";
 
-export const api = axios.create({
+export const http = axios.create({
   baseURL: import.meta.env.BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export const apiAuth = axios.create({
+export const httpAuth = axios.create({
   baseURL: import.meta.env.BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-api.interceptors.request.use(async (config) => {
+http.interceptors.request.use(async (config) => {
   const auth = useAuthStore.getState();
 
   if (auth.isAuth && config.headers) {
@@ -25,7 +25,7 @@ api.interceptors.request.use(async (config) => {
   return config;
 });
 
-api.interceptors.response.use(undefined, async (error) => {
+http.interceptors.response.use(undefined, async (error) => {
   const originalRequest = error.config;
   const auth = useAuthStore.getState();
 
@@ -48,7 +48,7 @@ api.interceptors.response.use(undefined, async (error) => {
       //   refreshToken: data.refresh,
       // })
 
-      return api(originalRequest);
+      return http(originalRequest);
     } catch (error) {
       auth.logout();
       return Promise.reject(error);

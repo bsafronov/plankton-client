@@ -1,3 +1,5 @@
+import { SignInForm } from "~/features/sign-in";
+import { SignUpForm } from "~/features/sign-up";
 import { CCard } from "~/shared/components/card";
 import { Link } from "~/shared/ui/link";
 
@@ -10,6 +12,7 @@ export const AuthFormWidget = ({ type }: Props) => {
   return (
     <CCard
       title={isSignIn ? "Авторизация" : "Регистрация"}
+      children={isSignIn ? <SignInForm /> : <SignUpForm />}
       footer={isSignIn ? <SignUpFooter /> : <SignInFooter />}
     />
   );

@@ -30,8 +30,8 @@ export const SignInForm = () => {
         <CFormField
           control={control}
           name="password"
-          label="Пароль"
           type="password"
+          label="Пароль"
         />
         <div className="flex justify-end">
           <Button>Войти</Button>

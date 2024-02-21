@@ -1,7 +1,5 @@
-import { Input } from "~/shared/ui/input";
+import { Checkbox, Input, InputMask } from "~/shared/ui";
 import { CFormFieldComponents, CFormFieldType } from "./types";
-import { Checkbox } from "~/shared/ui/checkbox";
-import { InputMask } from "~/shared/ui/input-mask";
 
 export const getCFormField = (type: CFormFieldType) => {
   return formFields[type];

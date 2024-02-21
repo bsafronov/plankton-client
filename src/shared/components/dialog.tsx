@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../ui";
 
 type Props = React.ComponentPropsWithoutRef<typeof Dialog> & {
   trigger: React.ReactNode;

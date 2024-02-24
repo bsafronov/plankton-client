@@ -1,9 +1,8 @@
 import { toast } from "sonner";
 import { CFormField } from "~/shared/components";
-import { Button } from "~/shared/ui/button";
-import { Form } from "~/shared/ui/form";
 import { useSignInForm } from "../hooks/use-form";
 import { useSignInMutation } from "../hooks/use-mutation";
+import { Button, Form, Input, InputPassword } from "~/shared/ui";
 
 export const SignInForm = () => {
   const form = useSignInForm();
@@ -26,12 +25,13 @@ export const SignInForm = () => {
           control={control}
           name="username"
           label="Имя пользователя"
+          render={(props) => <Input {...props} />}
         />
         <CFormField
           control={control}
           name="password"
-          type="password"
           label="Пароль"
+          render={(props) => <InputPassword {...props} />}
         />
         <div className="flex justify-end">
           <Button>Войти</Button>

@@ -1,13 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-  CCard,
-  CFormField,
-  InputPassword,
-  ReactSelect,
-} from "~/shared/components";
-import { Checkbox, Input, InputMask } from "~/shared/ui";
+import { CCard, CFormField, ReactSelect } from "~/shared/components";
+import { Checkbox, Input, InputMask, InputPassword } from "~/shared/ui";
 import { Button } from "~/shared/ui/button";
 import { Form } from "~/shared/ui/form";
 
@@ -16,12 +11,10 @@ const schema = z.object({
   password: z.string().min(1, "Обязательное поле"),
   checkbox: z.boolean(),
   tel: z.string().length(18, "Неверный формат"),
-  reactSelectSingle: z
-    .object({
-      label: z.string(),
-      value: z.string(),
-    })
-    .nullable(),
+  reactSelectSingle: z.object({
+    label: z.string(),
+    value: z.string(),
+  }),
   reactSelectMulti: z.array(
     z.object({
       label: z.string(),
@@ -45,7 +38,7 @@ export const ShowcasePage = () => {
       password: "",
       checkbox: false,
       tel: "",
-      reactSelectSingle: null,
+      reactSelectSingle: mock[0],
       reactSelectMulti: [],
     },
   });

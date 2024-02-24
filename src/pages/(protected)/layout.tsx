@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "~/shared/hooks";
 
-export const useProtectedAuth = () => {
+export const ProtectedLayout = () => {
   const isAuth = useAuthStore().isAuth;
   const pathname = useLocation().pathname;
   const navigate = useNavigate();
@@ -12,4 +12,10 @@ export const useProtectedAuth = () => {
       navigate("/auth/sign-in");
     }
   }, [pathname, isAuth]);
+
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };

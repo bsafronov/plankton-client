@@ -1,11 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import { RootLayout } from "./layouts/root-layout";
-import { AuthLayout } from "./layouts/auth-layout";
-import { DashboardLayout } from "./layouts/dashboard-layout";
 import { ErrorPage } from "~/pages/error";
-import { HomePage } from "~/pages/page";
+import { RootPage } from "~/pages/(protected)/page";
 import { SignInPage } from "~/pages/auth/sign-in/page";
 import { SignUpPage } from "~/pages/auth/sign-up/page";
+import { RootLayout } from "~/pages/layout";
+import { ProtectedLayout } from "~/pages/(protected)/layout";
+import { ProfilePage } from "~/pages/(protected)/profile/page";
+import { MessagesPage } from "~/pages/(protected)/messages/page";
+import { SettingsPage } from "~/pages/(protected)/settings/page";
+import { ProcessesPage } from "~/pages/(protected)/processes/page";
+import { AuthLayout } from "~/pages/auth/layout";
 import { ShowcasePage } from "~/pages/showcase/page";
 
 export const router = createBrowserRouter([
@@ -16,27 +20,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <DashboardLayout />,
+        element: <ProtectedLayout />,
         children: [
           {
             index: true,
-            element: <HomePage />,
+            element: <RootPage />,
           },
           {
             path: "/profile",
-            element: <div>Profile</div>,
+            element: <ProfilePage />,
           },
           {
             path: "/messages",
-            element: <div>Messages</div>,
+            element: <MessagesPage />,
           },
           {
             path: "/settings",
-            element: <div>Settings</div>,
+            element: <SettingsPage />,
           },
           {
             path: "/processes",
-            element: <div>Processes</div>,
+            element: <ProcessesPage />,
           },
         ],
       },

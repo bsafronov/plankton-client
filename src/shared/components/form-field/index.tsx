@@ -1,27 +1,24 @@
-import { FieldValues } from "react-hook-form";
+import { FieldPath, FieldValues } from "react-hook-form";
 import { FormField } from "~/shared/ui/form";
-import { getCFormFieldRender } from "./render";
 import { CFormFieldProps } from "./types";
+import { FieldPlacement } from "./placement";
 
-export const CFormField = <T extends FieldValues>({
-  label,
-  description,
-  type = "text",
-  settings,
+export const CFormField = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
+  name,
+  control,
+  render,
   ...props
-}: CFormFieldProps<T>) => {
+}: CFormFieldProps<TFieldValues, TName>) => {
   return (
     <FormField
-      {...props}
-      render={({ field }) =>
-        getCFormFieldRender(type)({
-          field,
-          description,
-          type,
-          label,
-          settings,
-        })
-      }
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <FieldPlacement {...props}>{render(field)}</FieldPlacement>
+      )}
     />
   );
 };

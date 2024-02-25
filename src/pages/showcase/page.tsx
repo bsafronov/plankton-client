@@ -1,10 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { CCard, CFormField, ReactSelect } from "~/shared/components";
+import { CCard, CForm, CFormField, ReactSelect } from "~/shared/components";
 import { Checkbox, Input, InputMask, InputPassword } from "~/shared/ui";
-import { Button } from "~/shared/ui/button";
-import { Form } from "~/shared/ui/form";
 
 const schema = z.object({
   text: z.string().min(1, "Обязательное поле"),
@@ -55,63 +53,55 @@ export const ShowcasePage = () => {
       title="Форма"
       footer="Пример использования компонентов в форме"
     >
-      <Form {...form}>
-        <form onSubmit={onSubmit} className="space-y-4">
-          <CFormField
-            control={control}
-            name="text"
-            label="Текст"
-            description="Текст"
-            render={(props) => <Input {...props} />}
-          />
-          <CFormField
-            control={control}
-            name="password"
-            label="Пароль"
-            description="Пароль"
-            render={(props) => <InputPassword {...props} />}
-          />
-          <CFormField
-            control={control}
-            name="tel"
-            label="Телефон"
-            description="Телефон"
-            render={(props) => (
-              <InputMask mask={"+7 (999) 999-99-99"} {...props} />
-            )}
-          />
-          <CFormField
-            control={control}
-            name="checkbox"
-            label="Чекбокс"
-            description="Чекбокс"
-            placement="checkbox"
-            render={({ onChange, value, ...props }) => (
-              <Checkbox {...props} onCheckedChange={onChange} checked={value} />
-            )}
-          />
-          <CFormField
-            control={control}
-            name="reactSelectSingle"
-            label="Селект с одним значением"
-            description="Селект с одним значением"
-            render={(props) => <ReactSelect {...props} options={mock} />}
-          />
-          <CFormField
-            control={control}
-            name="reactSelectMulti"
-            label="Селект множественного выбора"
-            description="Селект множественного выбора"
-            render={(props) => (
-              <ReactSelect {...props} options={mock} isMulti />
-            )}
-          />
-
-          <div className="flex justify-end mt-4">
-            <Button>Отправить</Button>
-          </div>
-        </form>
-      </Form>
+      <CForm form={form} onSubmit={onSubmit}>
+        <CFormField
+          control={control}
+          name="text"
+          label="Текст"
+          description="Текст"
+          render={(props) => <Input {...props} />}
+        />
+        <CFormField
+          control={control}
+          name="password"
+          label="Пароль"
+          description="Пароль"
+          render={(props) => <InputPassword {...props} />}
+        />
+        <CFormField
+          control={control}
+          name="tel"
+          label="Телефон"
+          description="Телефон"
+          render={(props) => (
+            <InputMask mask={"+7 (999) 999-99-99"} {...props} />
+          )}
+        />
+        <CFormField
+          control={control}
+          name="checkbox"
+          label="Чекбокс"
+          description="Чекбокс"
+          placement="checkbox"
+          render={({ onChange, value, ...props }) => (
+            <Checkbox {...props} onCheckedChange={onChange} checked={value} />
+          )}
+        />
+        <CFormField
+          control={control}
+          name="reactSelectSingle"
+          label="Селект с одним значением"
+          description="Селект с одним значением"
+          render={(props) => <ReactSelect {...props} options={mock} />}
+        />
+        <CFormField
+          control={control}
+          name="reactSelectMulti"
+          label="Селект множественного выбора"
+          description="Селект множественного выбора"
+          render={(props) => <ReactSelect {...props} options={mock} isMulti />}
+        />
+      </CForm>
     </CCard>
   );
 };

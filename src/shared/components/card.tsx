@@ -15,16 +15,16 @@ type Props = {
 };
 
 export const CCard = forwarded<typeof Card, Props>(
-  ({ title, description, footer, children, ...props }, ref) => {
+  ({ title, description, footer, children, className, ...props }, ref) => {
     return (
-      <Card {...props} ref={ref}>
+      <Card ref={ref} {...props}>
         {(title || description) && (
           <CardHeader>
             {title && <CardTitle>{title}</CardTitle>}
             {description && <CardDescription>{description}</CardDescription>}
           </CardHeader>
         )}
-        <CardContent>{children}</CardContent>
+        <CardContent className={className}>{children}</CardContent>
         {footer && <CardFooter>{footer}</CardFooter>}
       </Card>
     );

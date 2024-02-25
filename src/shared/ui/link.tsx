@@ -6,7 +6,7 @@ export const Link = forwarded<typeof ReactRouterLink>((props, ref) => {
     <ReactRouterLink
       {...props}
       ref={ref}
-      className={cn("text-blue-500 hover:text-blue-400", props.className)}
+      className={cn("text-blue-600 hover:text-blue-500", props.className)}
     />
   );
 });

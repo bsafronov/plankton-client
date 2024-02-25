@@ -11,6 +11,7 @@ export const AuthFormWidget = ({ type }: Props) => {
   const isSignIn = type === "sign-in";
   return (
     <CCard
+      className="min-w-96"
       title={isSignIn ? "Авторизация" : "Регистрация"}
       children={isSignIn ? <SignInForm /> : <SignUpForm />}
       footer={isSignIn ? <SignUpFooter /> : <SignInFooter />}

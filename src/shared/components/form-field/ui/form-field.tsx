@@ -1,6 +1,6 @@
 import { FieldPath, FieldValues } from "react-hook-form";
 import { FormField } from "~/shared/ui/form";
-import { CFormFieldProps } from "./types";
+import { CFormFieldProps } from "../types";
 import { FieldPlacement } from "./placement";
 
 export const CFormField = <

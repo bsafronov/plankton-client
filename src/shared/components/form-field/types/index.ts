@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 import { ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
 import { FormField } from "~/shared/ui/form";
-import { CFormFieldPlacement } from "../placement";
+import { CFormFieldPlacement } from "../ui/placement";
 
 export type CFormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -14,12 +14,13 @@ export type CFormFieldProps<
   description?: string;
   className?: string;
   placement?: CFormFieldPlacement;
+  required?: boolean;
   render: (props: ControllerRenderProps<TFieldValues, TName>) => ReactNode;
 };
 
 export type CFormFieldPlacementProps = Pick<
   CFormFieldProps,
-  "className" | "description" | "label" | "placement"
+  "className" | "description" | "label" | "placement" | "required"
 > & {
   children?: ReactNode;
 };

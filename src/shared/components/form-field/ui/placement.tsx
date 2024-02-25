@@ -6,24 +6,24 @@ import {
   FormLabel,
   FormMessage,
 } from "~/shared/ui";
-import { CFormFieldPlacementList, CFormFieldPlacementProps } from "./types";
+import { CFormFieldPlacementList, CFormFieldPlacementProps } from "../types";
 
 export type CFormFieldPlacement = "checkbox";
 
 const placementList: CFormFieldPlacementList = {
-  DEFAULT: ({ children, className, description, label }) => (
+  DEFAULT: ({ children, className, description, label, required }) => (
     <FormItem className={className}>
-      {label && <FormLabel>{label}</FormLabel>}
+      {label && <FormLabel required={required}>{label}</FormLabel>}
       <FormControl>{children}</FormControl>
       {description && <FormDescription>{description}</FormDescription>}
       <FormMessage />
     </FormItem>
   ),
-  checkbox: ({ children, className, description, label }) => (
+  checkbox: ({ children, className, description, label, required }) => (
     <FormItem className={cn("flex gap-2", className)}>
       <FormControl>{children}</FormControl>
       <div className="flex flex-col">
-        {label && <FormLabel>{label}</FormLabel>}
+        {label && <FormLabel required={required}>{label}</FormLabel>}
         {description && <FormDescription>{description}</FormDescription>}
         <FormMessage />
       </div>

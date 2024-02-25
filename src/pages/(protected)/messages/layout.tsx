@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { UserMessagesListWidget } from "~/widgets/user-messages-list";
+import { MessageUserListWidget } from "~/widgets/message-user-list";
 
 export const MessagesLayout = () => {
   return (
     <div className="flex min-h-screen">
-      <UserMessagesListWidget />
+      <MessageUserListWidget />
       <Outlet />
     </div>
   );

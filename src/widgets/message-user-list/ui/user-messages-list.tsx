@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback } from "~/shared/ui";
 
-export const UserMessagesListWidget = () => {
+export const MessageUserListWidget = () => {
   return (
     <aside className="border-r">
       <h5 className="border-b font-semibold text-center">Сообщения</h5>

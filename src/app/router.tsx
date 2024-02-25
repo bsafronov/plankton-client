@@ -11,6 +11,10 @@ import { SettingsPage } from "~/pages/(protected)/settings/page";
 import { ProcessesPage } from "~/pages/(protected)/processes/page";
 import { AuthLayout } from "~/pages/auth/layout";
 import { ShowcasePage } from "~/pages/showcase/page";
+import { ProccessIdPage } from "~/pages/(protected)/processes/[process_id]/page";
+import { ProcessesLayout } from "~/pages/(protected)/processes/layout";
+import { MessagesUserIdPage } from "~/pages/(protected)/messages/[user_id]/page";
+import { MessagesLayout } from "~/pages/(protected)/messages/layout";
 
 export const router = createBrowserRouter([
   {
@@ -31,16 +35,34 @@ export const router = createBrowserRouter([
             element: <ProfilePage />,
           },
           {
-            path: "/messages",
-            element: <MessagesPage />,
+            element: <MessagesLayout />,
+            children: [
+              {
+                path: "/messages",
+                element: <MessagesPage />,
+              },
+              {
+                path: "/messages/:user_id",
+                element: <MessagesUserIdPage />,
+              },
+            ],
           },
           {
             path: "/settings",
             element: <SettingsPage />,
           },
           {
-            path: "/processes",
-            element: <ProcessesPage />,
+            element: <ProcessesLayout />,
+            children: [
+              {
+                path: "/processes",
+                element: <ProcessesPage />,
+              },
+              {
+                path: "/processes/:process_id",
+                element: <ProccessIdPage />,
+              },
+            ],
           },
         ],
       },

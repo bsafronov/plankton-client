@@ -4,7 +4,6 @@ import { RootPage } from "~/pages/(protected)/page";
 import { SignInPage } from "~/pages/auth/sign-in/page";
 import { SignUpPage } from "~/pages/auth/sign-up/page";
 import { RootLayout } from "~/pages/layout";
-import { ProtectedLayout } from "~/pages/(protected)/layout";
 import { ProfilePage } from "~/pages/(protected)/profile/page";
 import { MessagesPage } from "~/pages/(protected)/messages/page";
 import { SettingsPage } from "~/pages/(protected)/settings/page";
@@ -15,15 +14,14 @@ import { ProccessIdPage } from "~/pages/(protected)/processes/[process_id]/page"
 import { ProcessesLayout } from "~/pages/(protected)/processes/layout";
 import { MessagesUserIdPage } from "~/pages/(protected)/messages/[user_id]/page";
 import { MessagesLayout } from "~/pages/(protected)/messages/layout";
+import { ProtectedLayout } from "~/pages/(protected)/layout";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
         element: <ProtectedLayout />,
         children: [
           {
@@ -67,7 +65,6 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "/showcase",
         element: <AuthLayout />,
         children: [
           {
@@ -77,7 +74,6 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "/auth",
         element: <AuthLayout />,
         children: [
           {

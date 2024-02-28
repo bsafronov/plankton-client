@@ -15,6 +15,8 @@ import { ProcessesLayout } from "~/pages/(protected)/processes/layout";
 import { MessagesUserIdPage } from "~/pages/(protected)/messages/[user_id]/page";
 import { MessagesLayout } from "~/pages/(protected)/messages/layout";
 import { ProtectedLayout } from "~/pages/(protected)/layout";
+import { AdminLayout } from "~/pages/(protected)/admin/layout";
+import { AdminPage } from "~/pages/(protected)/admin/page";
 
 export const router = createBrowserRouter([
   {
@@ -62,8 +64,18 @@ export const router = createBrowserRouter([
               },
             ],
           },
+          {
+            element: <AdminLayout />,
+            children: [
+              {
+                path: "/admin",
+                element: <AdminPage />,
+              },
+            ],
+          },
         ],
       },
+
       {
         element: <AuthLayout />,
         children: [

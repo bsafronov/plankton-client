@@ -7,9 +7,10 @@ type Props = {
   href: string;
   icon: LucideIcon;
   unread?: boolean;
+  className?: string;
 };
 
-export const NavbarItem = ({ href, icon: Icon, unread }: Props) => {
+export const NavbarItem = ({ href, icon: Icon, unread, className }: Props) => {
   const pathname = useLocation().pathname;
 
   return (
@@ -19,7 +20,8 @@ export const NavbarItem = ({ href, icon: Icon, unread }: Props) => {
           to={href}
           className={cn(
             "relative flex justify-center items-center size-12 text-muted-foreground hover:text-primary",
-            pathname === href && "bg-primary-foreground"
+            pathname === href && "bg-primary-foreground",
+            className
           )}
         >
           <Icon />

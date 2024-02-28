@@ -1,11 +1,15 @@
 import { Outlet } from "react-router-dom";
+import { Header } from "~/shared/components";
 import { ChatListWidget } from "~/widgets/chat-list";
 
 export const MessagesLayout = () => {
   return (
-    <div className="flex min-h-screen">
-      <ChatListWidget />
-      <Outlet />
+    <div className="flex flex-col min-h-screen">
+      <Header title="Сообщения" />
+      <div className="flex grow">
+        <ChatListWidget />
+        <Outlet />
+      </div>
     </div>
   );
 };

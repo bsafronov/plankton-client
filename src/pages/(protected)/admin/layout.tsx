@@ -1,5 +1,6 @@
 import { Loader2 } from "lucide-react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Header } from "~/shared/components";
 import { useUser } from "~/shared/hooks";
 import { Button } from "~/shared/ui";
 
@@ -27,5 +28,14 @@ export const AdminLayout = () => {
     );
   }
 
-  return <>{isAdmin && <Outlet />}</>;
+  return (
+    <>
+      {isAdmin && (
+        <div className="flex flex-col min-h-screen">
+          <Header title="Админ-панель" />
+          <Outlet />
+        </div>
+      )}
+    </>
+  );
 };

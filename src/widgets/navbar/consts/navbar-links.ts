@@ -1,7 +1,6 @@
 import {
   LucideIcon,
   MessageSquare,
-  Package,
   Paperclip,
   Settings,
   User2,
@@ -15,11 +14,6 @@ type NavbarLink = {
 };
 
 export const navbarLinks: NavbarLink[] = [
-  {
-    href: "/",
-    title: "Главная",
-    icon: Package,
-  },
   {
     href: "/profile",
     title: "Профиль",

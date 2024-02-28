@@ -4,7 +4,6 @@ import { Avatar, AvatarFallback } from "~/shared/ui";
 export const ChatListWidget = () => {
   return (
     <aside className="border-r">
-      <h5 className="border-b font-semibold text-center">Сообщения</h5>
       <div className="flex flex-col border-b divide-y">
         <Link to={"/messages/1"} className="flex p-2 gap-2 items-center">
           <Avatar>

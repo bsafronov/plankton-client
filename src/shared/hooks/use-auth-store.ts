@@ -2,53 +2,19 @@ import { StateCreator, create } from "zustand";
 import { persist } from "zustand/middleware";
 type Props = {
   isAuth: boolean;
-  accessToken: string | null;
-  refreshToken: string | null;
-  login: (tokens: TokensProps) => void;
-  refresh: (tokens: TokensProps) => void;
-  logout: () => void;
-} & (AuthorizedProps | UnauthorizedProps);
-
-type AuthorizedProps = {
-  isAuth: true;
-  accessToken: string;
-  refreshToken: string;
-};
-
-type UnauthorizedProps = {
-  isAuth: false;
-  accessToken: null;
-  refreshToken: null;
-};
-
-type TokensProps = {
-  accessToken: string;
-  refreshToken: string;
+  userId: number | null;
+  signIn: (userId: number) => void;
+  signOut: () => void;
 };
 
 const authState: StateCreator<Props> = (set) => ({
   isAuth: false,
-  accessToken: null,
-  refreshToken: null,
-  logout: () => {
-    set({
-      isAuth: false,
-      accessToken: null,
-      refreshToken: null,
-    });
+  userId: null,
+  signIn(userId) {
+    set({ isAuth: true, userId });
   },
-  login: ({ accessToken, refreshToken }) => {
-    set({
-      isAuth: true,
-      accessToken,
-      refreshToken,
-    });
-  },
-  refresh: ({ accessToken, refreshToken }) => {
-    set({
-      accessToken,
-      refreshToken,
-    });
+  signOut() {
+    set({ isAuth: false });
   },
 });
 

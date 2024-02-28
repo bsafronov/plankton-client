@@ -15,15 +15,15 @@ export const httpAuth = axios.create({
   },
 });
 
-http.interceptors.request.use(async (config) => {
-  const auth = useAuthStore.getState();
+// http.interceptors.request.use(async (config) => {
+//   const auth = useAuthStore.getState();
 
-  if (auth.isAuth && config.headers) {
-    config.headers["Authorization"] = `Bearer ${auth.accessToken}`;
-  }
+//   if (auth.isAuth && config.headers) {
+//     config.headers["Authorization"] = `Bearer ${auth.accessToken}`;
+//   }
 
-  return config;
-});
+//   return config;
+// });
 
 http.interceptors.response.use(undefined, async (error) => {
   const originalRequest = error.config;
@@ -31,28 +31,7 @@ http.interceptors.response.use(undefined, async (error) => {
 
   if (error.response.status === 401 && !originalRequest._retry) {
     originalRequest._retry = true;
-
-    if (!auth.isAuth) {
-      auth.logout();
-      return Promise.reject(error);
-    }
-
-    try {
-      // TODO: implement refresh flow
-      // const { data } = await auth.refresh({
-      //   refresh: authState.refreshToken,
-      // })
-
-      // auth.refresh({
-      //   accessToken: data.access,
-      //   refreshToken: data.refresh,
-      // })
-
-      return http(originalRequest);
-    } catch (error) {
-      auth.logout();
-      return Promise.reject(error);
-    }
+    auth.signOut();
   }
 
   return Promise.reject(error);

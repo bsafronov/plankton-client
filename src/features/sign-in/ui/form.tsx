@@ -9,17 +9,14 @@ export const SignInForm = () => {
   const form = useSignInForm();
   const { control, handleSubmit } = form;
   // const { mutateAsync } = useSignInMutation();
-  const login = useAuthStore().login;
+  const signIn = useAuthStore().signIn;
   const onSubmit = handleSubmit(async (data) => {
     try {
       // const { data: tokens } = await mutateAsync(data);
       // console.log(tokens);
       console.log(data);
 
-      login({
-        accessToken: "",
-        refreshToken: "",
-      });
+      signIn(1);
     } catch (e) {
       toast.error("Неверное имя пользователя или пароль");
     }

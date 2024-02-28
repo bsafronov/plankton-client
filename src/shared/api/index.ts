@@ -1,1 +1,1 @@
-export { http, httpAuth } from "./http";
+export { http } from "./http";

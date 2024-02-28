@@ -5,7 +5,6 @@ import { z } from "zod";
 const schema = z.object({
   username: z.string(),
   password: z.string(),
-  isRemember: z.boolean(),
 });
 
 type Schema = z.infer<typeof schema>;
@@ -16,7 +15,6 @@ export const useSignInForm = () => {
     defaultValues: {
       username: "",
       password: "",
-      isRemember: false,
     },
   });
 };

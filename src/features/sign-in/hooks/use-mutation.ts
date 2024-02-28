@@ -1,9 +1,24 @@
 import { useMutation } from "@tanstack/react-query";
-import { authApi, authConsts } from "~/entities/auth";
+import { http } from "~/shared/api";
+import { SignInReq, SignInRes } from "../types";
+import { useAuthStore } from "~/shared/hooks";
+import { toast } from "sonner";
 
 export const useSignInMutation = () => {
-  return useMutation({
-    mutationKey: authConsts.queryKeys.signIn,
-    mutationFn: authApi.signIn,
+  const signIn = useAuthStore().signIn;
+
+  return useMutation<SignInRes, Error, SignInReq>({
+    mutationKey: ["auth", "sign-in"],
+    mutationFn: async (input) => {
+      const { data } = await http.post<SignInRes>("/auth/sign-in", input);
+      return data;
+    },
+    onSuccess: (userId) => {
+      toast.success("Вы успешно вошли!");
+      signIn(userId);
+    },
+    onError: (e) => {
+      toast.error(e.message);
+    },
   });
 };

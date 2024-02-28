@@ -1,12 +1,13 @@
 import { LogOut } from "lucide-react";
 import { CAlertDialog } from "~/shared/components";
-import { useAuthStore } from "~/shared/hooks";
+import { useSignOutMutation } from "../hooks/use-mutation";
 
 export const SignOutIconButton = () => {
-  const logout = useAuthStore().logout;
+  const { mutate } = useSignOutMutation();
+
   return (
     <CAlertDialog
-      onSubmit={logout}
+      onSubmit={mutate}
       title="Вы хотите выйти?"
       description="Потребуется повторная авторизация"
     >

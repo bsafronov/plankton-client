@@ -1,17 +1,21 @@
 import { CForm, CFormField } from "~/shared/components";
 import { Input, InputPassword } from "~/shared/ui";
 import { useSignUpForm } from "../hooks/use-form";
+import { useSignUpMutation } from "../hooks/use-mutation";
 
 export const SignUpForm = () => {
   const form = useSignUpForm();
   const { handleSubmit, control } = form;
-
-  const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
-  });
+  const { mutate, isPending } = useSignUpMutation();
+  const onSubmit = handleSubmit(async (data) => mutate(data));
 
   return (
-    <CForm form={form} onSubmit={onSubmit} submitText="Зарегистрироваться">
+    <CForm
+      form={form}
+      onSubmit={onSubmit}
+      submitText="Зарегистрироваться"
+      isLoading={isPending}
+    >
       <CFormField
         control={control}
         name="username"

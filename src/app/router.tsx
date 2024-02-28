@@ -17,6 +17,10 @@ import { MessagesLayout } from "~/pages/(protected)/messages/layout";
 import { ProtectedLayout } from "~/pages/(protected)/layout";
 import { AdminLayout } from "~/pages/(protected)/admin/layout";
 import { AdminPage } from "~/pages/(protected)/admin/page";
+import { AdminDepartmentsPage } from "~/pages/(protected)/admin/departments/page";
+import { AdminProductsPage } from "~/pages/(protected)/admin/products/page";
+import { AdminTemplatesPage } from "~/pages/(protected)/admin/templates/page";
+import { AdminUsersPage } from "~/pages/(protected)/admin/users/page";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +74,22 @@ export const router = createBrowserRouter([
               {
                 path: "/admin",
                 element: <AdminPage />,
+              },
+              {
+                path: "/admin/departments",
+                element: <AdminDepartmentsPage />,
+              },
+              {
+                path: "/admin/products",
+                element: <AdminProductsPage />,
+              },
+              {
+                path: "/admin/templates",
+                element: <AdminTemplatesPage />,
+              },
+              {
+                path: "/admin/users",
+                element: <AdminUsersPage />,
               },
             ],
           },

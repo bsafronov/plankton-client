@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from "~/shared/components";
 import { useUser } from "~/shared/hooks";
 import { Button } from "~/shared/ui";
+import { AdminNavbarList } from "~/widgets/admin-navbar-list";
 
 export const AdminLayout = () => {
   const role = useUser()?.role;
@@ -33,7 +34,12 @@ export const AdminLayout = () => {
       {isAdmin && (
         <div className="flex flex-col min-h-screen">
           <Header title="Админ-панель" />
-          <Outlet />
+          <div className="flex grow">
+            <AdminNavbarList />
+            <div className="p-4">
+              <Outlet />
+            </div>
+          </div>
         </div>
       )}
     </>

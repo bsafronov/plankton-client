@@ -36,7 +36,7 @@ export const AdminLayout = () => {
           <Header title="Админ-панель" />
           <div className="flex grow">
             <AdminNavbarList />
-            <div className="p-4">
+            <div className="p-4 grow">
               <Outlet />
             </div>
           </div>

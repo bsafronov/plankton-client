@@ -17,7 +17,7 @@ type Props = {
 export const CCard = forwarded<typeof Card, Props>(
   ({ title, description, footer, children, className, ...props }, ref) => {
     return (
-      <Card ref={ref} {...props}>
+      <Card ref={ref} {...props} className="h-full">
         {(title || description) && (
           <CardHeader>
             {title && <CardTitle>{title}</CardTitle>}

@@ -9,6 +9,19 @@ import { GroupBase } from "react-select";
 import ReactSelectCreatableComponent from "react-select/creatable";
 import { getSettings } from "./settings";
 
+type Props<
+  Option = unknown,
+  isMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = Omit<
+  ComponentPropsWithoutRef<
+    typeof ReactSelectCreatableComponent<Option, isMulti, Group>
+  >,
+  "isDisabled"
+> & {
+  disabled?: boolean;
+};
+
 const ReactSelectCreatableWithoutRef = <
   Option = unknown,
   isMulti extends boolean = false,
@@ -19,14 +32,7 @@ const ReactSelectCreatableWithoutRef = <
     closeMenuOnSelect,
     disabled,
     ...props
-  }: Omit<
-    ComponentPropsWithoutRef<
-      typeof ReactSelectCreatableComponent<Option, isMulti, Group>
-    >,
-    "isDisabled"
-  > & {
-    disabled?: boolean;
-  },
+  }: Props<Option, isMulti, Group>,
   ref: ForwardedRef<
     ElementRef<typeof ReactSelectCreatableComponent<Option, isMulti, Group>>
   >
@@ -50,9 +56,7 @@ export const ReactSelectCreatable = forwardRef(
   isMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
-  props: ComponentPropsWithoutRef<
-    typeof ReactSelectCreatableComponent<Option, isMulti, Group>
-  > & {
+  props: Props<Option, isMulti, Group> & {
     ref?: ElementRef<
       typeof ReactSelectCreatableComponent<Option, isMulti, Group>
     >;

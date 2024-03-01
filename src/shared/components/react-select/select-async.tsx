@@ -4,6 +4,19 @@ import { GroupBase } from "react-select";
 import ReactSelectAsyncComponent from "react-select/async";
 import { getSettings } from "./settings";
 
+type Props<
+  Option = unknown,
+  isMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = Omit<
+  ComponentPropsWithoutRef<
+    typeof ReactSelectAsyncComponent<Option, isMulti, Group>
+  >,
+  "isDisabled"
+> & {
+  disabled?: boolean;
+};
+
 const ReactSelectAsyncWithoutRef = <
   Option = unknown,
   isMulti extends boolean = false,
@@ -14,14 +27,7 @@ const ReactSelectAsyncWithoutRef = <
     closeMenuOnSelect,
     disabled,
     ...props
-  }: Omit<
-    ComponentPropsWithoutRef<
-      typeof ReactSelectAsyncComponent<Option, isMulti, Group>
-    >,
-    "isDisabled"
-  > & {
-    disabled?: boolean;
-  },
+  }: Props<Option, isMulti, Group>,
   ref: Ref<Select<Option, isMulti, Group>>
 ) => {
   return (
@@ -41,9 +47,7 @@ export const ReactSelectAsync = forwardRef(ReactSelectAsyncWithoutRef) as <
   isMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
-  props: ComponentPropsWithoutRef<
-    typeof ReactSelectAsyncComponent<Option, isMulti, Group>
-  > & {
+  props: Props<Option, isMulti, Group> & {
     ref?: Ref<Select<Option, isMulti, Group>>;
   }
 ) => ReactNode;

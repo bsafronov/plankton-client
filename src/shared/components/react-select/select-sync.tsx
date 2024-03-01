@@ -3,6 +3,17 @@ import { ComponentPropsWithoutRef, ReactNode, Ref, forwardRef } from "react";
 import ReactSelectComponent, { GroupBase } from "react-select";
 import { getSettings } from "./settings";
 
+type Props<
+  Option = unknown,
+  isMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = Omit<
+  ComponentPropsWithoutRef<typeof ReactSelectComponent<Option, isMulti, Group>>,
+  "isDisabled"
+> & {
+  disabled?: boolean;
+};
+
 const ReactSelectWithoutRef = <
   Option = unknown,
   isMulti extends boolean = false,
@@ -13,14 +24,7 @@ const ReactSelectWithoutRef = <
     closeMenuOnSelect,
     disabled,
     ...props
-  }: Omit<
-    ComponentPropsWithoutRef<
-      typeof ReactSelectComponent<Option, isMulti, Group>
-    >,
-    "isDisabled"
-  > & {
-    disabled?: boolean;
-  },
+  }: Props<Option, isMulti, Group>,
   ref: Ref<Select<Option, isMulti, Group>>
 ) => {
   return (
@@ -40,7 +44,7 @@ export const ReactSelect = forwardRef(ReactSelectWithoutRef) as <
   isMulti extends boolean = false,
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
-  props: ComponentPropsWithoutRef<
-    typeof ReactSelectComponent<Option, isMulti, Group>
-  > & { ref?: Ref<Select<Option, isMulti, Group>> }
+  props: Props<Option, isMulti, Group> & {
+    ref?: Ref<Select<Option, isMulti, Group>>;
+  }
 ) => ReactNode;

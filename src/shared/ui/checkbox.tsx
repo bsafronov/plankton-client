@@ -1,13 +1,20 @@
-import * as React from "react"
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
-import { Check } from "lucide-react"
+import * as React from "react";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { Check } from "lucide-react";
 
-import { cn } from "~/shared/lib/utils"
+import { cn } from "~/shared/lib/utils";
 
+type Props = Omit<
+  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+  "value" | "onChange"
+> & {
+  value?: boolean;
+  onChange?: (value: boolean) => void;
+};
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
->(({ className, ...props }, ref) => (
+  Props
+>(({ className, value, onChange, checked, onCheckedChange, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
@@ -15,6 +22,8 @@ const Checkbox = React.forwardRef<
       className
     )}
     {...props}
+    checked={checked ?? value}
+    onCheckedChange={onCheckedChange ?? onChange}
   >
     <CheckboxPrimitive.Indicator
       className={cn("flex items-center justify-center text-current")}
@@ -22,7 +31,7 @@ const Checkbox = React.forwardRef<
       <Check className="h-4 w-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
-))
-Checkbox.displayName = CheckboxPrimitive.Root.displayName
+));
+Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
-export { Checkbox }
+export { Checkbox };

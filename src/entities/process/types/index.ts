@@ -3,10 +3,10 @@ export type FieldType = "TEXT" | "NUMBER";
 export type ProcessTemplate = {
   id: ID;
   name: string;
-  fields?: ProcessFieldTemplate[];
-  stages?: ProcessStageTemplate[];
-  stageFlows?: ProcessStageFlowTemplate[];
-  stageFields?: ProcessStageFieldTemplate[];
+  fields: ProcessFieldTemplate[];
+  stages: ProcessStageTemplate[];
+  stageFlows: ProcessStageFlowTemplate[];
+  stageFields: ProcessStageFieldTemplate[];
 };
 export type CreateProcessTemplate = Pick<ProcessTemplate, "name">;
 

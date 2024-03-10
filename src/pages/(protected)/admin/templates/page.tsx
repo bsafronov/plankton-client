@@ -1,3 +1,9 @@
+import { CreateProcessTemplateDialog } from "~/features/create-process-template";
+
 export const AdminTemplatesPage = () => {
-  return <div>AdminTemplatesPage</div>;
+  return (
+    <div>
+      <CreateProcessTemplateDialog />
+    </div>
+  );
 };

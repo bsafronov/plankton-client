@@ -32,7 +32,10 @@ export type ProcessStageTemplate = {
   flowsTo?: ProcessStageFlowTemplate[];
   templateId: ID;
 };
-export type CreateProcessStageTemplate = Pick<ProcessStageTemplate, "name">;
+export type CreateProcessStageTemplate = Pick<
+  ProcessStageTemplate,
+  "name" | "templateId"
+>;
 export type FindManyProcessStageTemplates = {
   templateId?: ID;
 };
@@ -50,7 +53,7 @@ export type ProcessStageFieldTemplate = {
 };
 export type CreateProcessStageFieldTemplate = Omit<
   ProcessStageFieldTemplate,
-  "flows"
+  "flows" | "id"
 >;
 export type FindManyProcessStageFieldTemplates = {
   templateId?: ID;

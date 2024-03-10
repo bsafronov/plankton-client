@@ -1,6 +1,5 @@
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -11,9 +10,10 @@ import {
 
 type Props = React.ComponentPropsWithoutRef<typeof Dialog> & {
   trigger: React.ReactNode;
-  title?: string;
+  title: string;
   description?: string;
   footer?: React.ReactNode;
+  className?: string;
 };
 
 export const CDialog = ({
@@ -22,21 +22,19 @@ export const CDialog = ({
   title,
   description,
   footer,
+  className,
   ...props
 }: Props) => {
   return (
     <Dialog {...props}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent>
+      <DialogContent className={className}>
         <DialogHeader>
           {title && <DialogTitle>{title}</DialogTitle>}
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
         {children}
-        <DialogFooter>
-          {footer}
-          <DialogClose>Закрыть</DialogClose>
-        </DialogFooter>
+        {footer && <DialogFooter>{footer}</DialogFooter>}
       </DialogContent>
     </Dialog>
   );

@@ -21,6 +21,7 @@ import { AdminDepartmentsPage } from "~/pages/(protected)/admin/departments/page
 import { AdminProductsPage } from "~/pages/(protected)/admin/products/page";
 import { AdminTemplatesPage } from "~/pages/(protected)/admin/templates/page";
 import { AdminUsersPage } from "~/pages/(protected)/admin/users/page";
+import { AdminTemplateIdPage } from "~/pages/(protected)/admin/templates/[templateId]/page";
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
               {
                 path: "/admin/templates",
                 element: <AdminTemplatesPage />,
+              },
+              {
+                path: "/admin/templates/:templateId",
+                element: <AdminTemplateIdPage />,
               },
               {
                 path: "/admin/users",

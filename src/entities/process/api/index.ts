@@ -50,6 +50,10 @@ export const findOneTemplate = (id: ID) => {
   return http.get<ProcessTemplate>(`/processes/templates/${id}/`);
 };
 
+export const findOneStageTemplate = (id: ID) => {
+  return http.get<ProcessStageTemplate>(`/processes/templates/stages/${id}/`);
+};
+
 export const findManyFieldTemplates = (
   params?: FindManyProcessFieldTemplates
 ) => {

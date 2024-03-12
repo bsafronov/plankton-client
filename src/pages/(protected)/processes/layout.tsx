@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "~/shared/components";
+import { Header } from "~/shared/ui";
 import { ProcessListWidget } from "~/widgets/process-list";
 
 export const ProcessesLayout = () => {

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "~/shared/components";
+import { Header } from "~/shared/ui";
 import { ChatListWidget } from "~/widgets/chat-list";
 
 export const MessagesLayout = () => {

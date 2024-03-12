@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
-import { CCard, Header } from "~/shared/components";
-import { Avatar, AvatarFallback, buttonVariants } from "~/shared/ui";
+import {
+  Avatar,
+  AvatarFallback,
+  buttonVariants,
+  CCard,
+  Header,
+} from "~/shared/ui";
 
 export const ProfilePage = () => {
   return (

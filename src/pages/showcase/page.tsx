@@ -1,8 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { CCard, CForm, CFormField, ReactSelect } from "~/shared/components";
-import { Checkbox, Input, InputMask, InputPassword } from "~/shared/ui";
+import {
+  Checkbox,
+  Input,
+  InputMask,
+  InputPassword,
+  CCard,
+  CForm,
+  CFormField,
+  ReactSelect,
+} from "~/shared/ui";
 
 const schema = z.object({
   text: z.string().min(1, "Обязательное поле"),

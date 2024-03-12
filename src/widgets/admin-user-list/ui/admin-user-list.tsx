@@ -1,8 +1,8 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useAdminUserListQuery } from "../hooks/use-admin-user-list-query";
 import { Loader2 } from "lucide-react";
-import { CCard } from "~/shared/components";
 import { Link } from "react-router-dom";
+import { CCard } from "~/shared/ui";
 
 export const AdminUserList = () => {
   const { data: users, hasNextPage, fetchNextPage } = useAdminUserListQuery();

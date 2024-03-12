@@ -1,8 +1,7 @@
 import { Loader2 } from "lucide-react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Header } from "~/shared/components";
 import { useUser } from "~/shared/hooks";
-import { Button } from "~/shared/ui";
+import { Button, Header } from "~/shared/ui";
 import { AdminNavbarList } from "~/widgets/admin-navbar-list";
 
 export const AdminLayout = () => {
@@ -36,7 +35,7 @@ export const AdminLayout = () => {
           <Header title="Админ-панель" />
           <div className="flex grow">
             <AdminNavbarList />
-            <div className="p-4 grow">
+            <div className="grow flex flex-col p-4">
               <Outlet />
             </div>
           </div>

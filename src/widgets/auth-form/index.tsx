@@ -1,7 +1,6 @@
 import { SignInForm } from "~/features/sign-in";
 import { SignUpForm } from "~/features/sign-up";
-import { CCard } from "~/shared/components/card";
-import { Link } from "~/shared/ui/link";
+import { Link, CCard } from "~/shared/ui";
 
 type Props = {
   type: "sign-in" | "sign-up";

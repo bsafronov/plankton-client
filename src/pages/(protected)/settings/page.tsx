@@ -1,4 +1,4 @@
-import { Header } from "~/shared/components";
+import { Header } from "~/shared/ui";
 
 export const SettingsPage = () => {
   return (

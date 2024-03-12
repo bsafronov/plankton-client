@@ -1,5 +1,5 @@
 import { Link as ReactRouterLink } from "react-router-dom";
-import { cn, forwarded } from "../lib";
+import { cn, forwarded } from "~/shared/lib";
 
 export const Link = forwarded<typeof ReactRouterLink>((props, ref) => {
   return (

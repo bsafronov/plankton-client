@@ -9,7 +9,7 @@ export const Item = ({ stage }: Props) => {
   return (
     <Card className="border-dashed p-4 flex gap-4">
       <p>{stage.name}</p>
-      <Dialog stageId={stage.id} />
+      <Dialog stageId={stage.id} templateId={stage.templateId} />
     </Card>
   );
 };

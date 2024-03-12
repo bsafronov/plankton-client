@@ -4,8 +4,9 @@ import { Wrapper } from "./wrapper";
 
 type Props = {
   stageId: ID;
+  templateId: ID;
 };
-export const Dialog = ({ stageId }: Props) => {
+export const Dialog = ({ stageId, templateId }: Props) => {
   return (
     <CDialog
       title="Настройка этапа"
@@ -16,7 +17,7 @@ export const Dialog = ({ stageId }: Props) => {
       }
       full
     >
-      <Wrapper stageId={stageId} />
+      <Wrapper stageId={stageId} templateId={templateId} />
     </CDialog>
   );
 };

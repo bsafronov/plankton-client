@@ -28,8 +28,8 @@ export const useCurrentMutation = ({ reset, toggle }: Props) => {
       toggle();
       ctx.invalidateQueries({
         queryKey: queryKeys({
-          entity: "process-template",
-          type: "find-one",
+          entity: "process-template-stage",
+          type: "find-many",
           params: {
             templateId: stage.templateId,
           },

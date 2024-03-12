@@ -1,5 +1,4 @@
-import { CForm, CFormField } from "~/shared/components";
-import { Input, InputPassword } from "~/shared/ui";
+import { Input, InputPassword, CForm, CFormField } from "~/shared/ui";
 import { useSignInForm } from "../hooks/use-form";
 import { useSignInMutation } from "../hooks/use-mutation";
 

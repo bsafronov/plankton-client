@@ -1,8 +1,7 @@
 import { SelectDepartment } from "~/entities/department";
 import { SelectUserRole, useUserFilterStore } from "~/entities/user";
-import { CForm, CFormField } from "~/shared/components";
 import { cn } from "~/shared/lib";
-import { Card, Input } from "~/shared/ui";
+import { Card, Input, CForm, CFormField } from "~/shared/ui";
 import { useFilterUsersForm } from "../hooks/use-filter-users-form";
 
 export const FilterUsers = () => {

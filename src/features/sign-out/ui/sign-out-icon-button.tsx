@@ -1,5 +1,5 @@
 import { LogOut } from "lucide-react";
-import { CAlertDialog } from "~/shared/components";
+import { CAlertDialog } from "~/shared/ui";
 import { useSignOutMutation } from "../hooks/use-mutation";
 
 export const SignOutIconButton = () => {

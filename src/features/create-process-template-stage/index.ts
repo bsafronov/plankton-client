@@ -1,1 +1,1 @@
-export * from "./ui";
+export { Dialog as ProcessTemplateStageCreateDialog } from "./dialog";

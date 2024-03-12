@@ -84,10 +84,16 @@ export const router = createBrowserRouter([
                 path: "/admin/products",
                 element: <AdminProductsPage />,
               },
+
               {
                 path: "/admin/templates",
                 element: <AdminTemplatesPage />,
               },
+              {
+                path: "/admin/templates/:templateId",
+                element: <AdminTemplateIdPage />,
+              },
+
               {
                 path: "/admin/templates/:templateId",
                 element: <AdminTemplateIdPage />,

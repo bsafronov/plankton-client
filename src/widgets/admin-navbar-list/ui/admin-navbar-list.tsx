@@ -1,4 +1,11 @@
-import { Link } from "~/shared/ui";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Link,
+} from "~/shared/ui";
+import { ProcessTemplateList } from "~/widgets/process-template-list";
 
 export const AdminNavbarList = () => {
   return (
@@ -12,9 +19,19 @@ export const AdminNavbarList = () => {
       <Link to={"/admin/products"} className="px-4">
         Изделия
       </Link>
-      <Link to={"/admin/templates"} className="px-4">
-        Шаблоны
-      </Link>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="template">
+          <AccordionTrigger>
+            <Link to={"/admin/templates"} className="px-4 w-fit">
+              Шаблоны
+            </Link>
+          </AccordionTrigger>
+          <AccordionContent className="pl-4">
+            <ProcessTemplateList />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
       <Link to={"/admin/users"} className="px-4">
         Пользователи
       </Link>

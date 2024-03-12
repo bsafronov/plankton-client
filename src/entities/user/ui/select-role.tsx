@@ -1,7 +1,7 @@
 import Select from "node_modules/react-select/dist/declarations/src/Select";
 import { Ref, forwardRef } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { ReactSelect } from "~/shared/components";
+import { ReactSelect } from "~/shared/ui";
 import { Option } from "~/shared/types";
 
 type Props = Omit<ControllerRenderProps, "ref">;

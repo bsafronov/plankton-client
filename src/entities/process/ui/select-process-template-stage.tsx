@@ -1,21 +1,24 @@
 import Select from "node_modules/react-select/dist/declarations/src/Select";
 import { Ref, forwardRef } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { ReactSelect } from "~/shared/components";
 import { Option } from "~/shared/types";
-import { useFindManyStageTemplatesQuery } from "../hooks/use-find-many-stage-templates-query";
-import { FindManyProcessStageTemplates } from "../types";
+import { ReactSelect } from "~/shared/ui";
+import { processTemplateQuery } from "..";
 
-type Props = Omit<ControllerRenderProps, "ref"> & FindManyProcessStageTemplates;
+type Props = Omit<ControllerRenderProps, "ref"> & {
+  templateId: ID;
+  excludeStageId?: ID;
+};
 
 export const SelectProcessTemplateStage = forwardRef(
   (
-    { templateId, onChange, value, ...props }: Props,
+    { templateId, onChange, value, excludeStageId, ...props }: Props,
     ref: Ref<Select<Option<ID>>>
   ) => {
-    const { data: items, isLoading } = useFindManyStageTemplatesQuery({
-      templateId,
-    });
+    const { data: items, isLoading } =
+      processTemplateQuery.useTemplateStageList({
+        templateId,
+      });
 
     const getValue = () => {
       const selected = items?.find((item) => item.id === value);
@@ -29,7 +32,9 @@ export const SelectProcessTemplateStage = forwardRef(
     };
 
     const getOptions = () => {
-      return items?.map((item) => ({ value: item.id, label: item.name }));
+      return items
+        ?.filter((item) => item.id !== excludeStageId)
+        .map((item) => ({ value: item.id, label: item.name }));
     };
 
     return (

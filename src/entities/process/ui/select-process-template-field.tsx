@@ -1,21 +1,23 @@
 import Select from "node_modules/react-select/dist/declarations/src/Select";
 import { Ref, forwardRef } from "react";
 import { ControllerRenderProps } from "react-hook-form";
-import { ReactSelect } from "~/shared/components";
 import { Option } from "~/shared/types";
-import { useFindManyFieldTemplatesQuery } from "../hooks/use-find-many-field-templates-query";
-import { FindManyProcessFieldTemplates } from "../types";
+import { ReactSelect } from "~/shared/ui";
+import { processTemplateQuery } from "..";
 
-type Props = Omit<ControllerRenderProps, "ref"> & FindManyProcessFieldTemplates;
+type Props = Omit<ControllerRenderProps, "ref"> & {
+  templateId: ID;
+};
 
 export const SelectProcessTemplateField = forwardRef(
   (
     { templateId, onChange, value, ...props }: Props,
     ref: Ref<Select<Option<ID>>>
   ) => {
-    const { data: items, isLoading } = useFindManyFieldTemplatesQuery({
-      templateId,
-    });
+    const { data: items, isLoading } =
+      processTemplateQuery.useTemplateFieldList({
+        templateId,
+      });
 
     const getValue = () => {
       const selected = items?.find((item) => item.id === value);

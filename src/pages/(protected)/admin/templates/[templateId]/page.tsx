@@ -1,62 +1,20 @@
 import { useParams } from "react-router-dom";
-import "reactflow/dist/style.css";
-import { processHooks } from "~/entities/process";
-import { CreateProcessTemplateField } from "~/features/create-process-template-field";
-import { CreateProcessTemplateStageDialog } from "~/features/create-process-template-stage";
-import { UpdateProcessTemplateStageDialog } from "~/features/update-process-template-stage";
-import {
-  Card,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "~/shared/ui";
-import { ProcessTemplateStageFlow } from "~/widgets/process-template-stage-flow";
+import { ProcessTemplateDeleteDialog } from "~/features/delete-process-template";
+import { ProcessTemplateFieldList } from "~/widgets/process-template-field-list";
+import { ProcessTemplateInfo } from "~/widgets/process-template-info";
 
 export const AdminTemplateIdPage = () => {
   const { templateId } = useParams();
-  const { data: template } = processHooks.useFindOneTemplateQuery({
-    templateId: Number(templateId),
-  });
+  const id = Number(templateId);
   return (
-    <>
-      <div>
-        <p>Название: {template?.name}</p>
-        <div>
-          <h5>Поля:</h5>
-          {!!template?.fields?.length && (
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableHead>Название</TableHead>
-                </TableRow>
-                {template?.fields?.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell>{item.name}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          )}
-        </div>
-        <div className="my-4">
-          <CreateProcessTemplateField templateId={Number(templateId)} />
-        </div>
-        <div className="space-y-4 mb-4 grow">
-          {template?.stages?.map((item) => (
-            <div key={item.id} className="flex gap-4 items-center">
-              <Card className="w-full p-4">{item.name}</Card>
-              <UpdateProcessTemplateStageDialog stageId={item.id} />
-            </div>
-          ))}
-        </div>
-        <CreateProcessTemplateStageDialog templateId={Number(templateId)} />
+    <div>
+      <div className="grid grid-cols-2 gap-4">
+        <ProcessTemplateInfo templateId={id} />
+        <ProcessTemplateFieldList templateId={id} />
       </div>
-      <ProcessTemplateStageFlow
-        flows={template?.stageFlows}
-        stages={template?.stages}
-      />
-    </>
+      <div className="flex justify-end mt-4">
+        <ProcessTemplateDeleteDialog templateId={id} />
+      </div>
+    </div>
   );
 };

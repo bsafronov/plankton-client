@@ -1,9 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ArrowRight, Trash } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { processTemplateQuery } from "~/entities/process";
 import { ProcessTemplateStageFieldCreateDialog } from "~/features/create-process-template-stage-field";
-import { CCard, CForm, CFormField, Input } from "~/shared/ui";
+import { ProcessTemplateStageFieldUpdateDialog } from "~/features/update-process-template-stage-field";
+import { Button, CCard, CFormField, Form, Input } from "~/shared/ui";
 
 type Props = {
   stageId: ID;
@@ -20,15 +22,15 @@ export const FieldDemoForm = ({ stageId, templateId }: Props) => {
   const { data } = processTemplateQuery.useTemplateStageFieldList({
     stageId,
   });
+  const { data: fields } = processTemplateQuery.useTemplateFieldList();
+
   const form = useForm<Schema>({
     resolver: zodResolver(schema),
     defaultValues: {
       field: [],
     },
   });
-  const { handleSubmit, control } = form;
-
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const { control } = form;
 
   return (
     <CCard
@@ -40,18 +42,46 @@ export const FieldDemoForm = ({ stageId, templateId }: Props) => {
         />
       }
     >
-      <CForm form={form} onSubmit={onSubmit} submitText="Тестировать">
-        {data?.map(({ label, placeholder, description }, i) => (
-          <CFormField
-            key={i}
-            control={control}
-            name={`field.${i}`}
-            label={label}
-            description={description}
-            render={(props) => <Input placeholder={placeholder} {...props} />}
-          />
-        ))}
-      </CForm>
+      <Form {...form}>
+        {data?.map(
+          (
+            {
+              id,
+              stageId,
+              templateId,
+              label,
+              placeholder,
+              description,
+              fieldId,
+            },
+            i
+          ) => (
+            <div key={i} className="flex gap-2 items-center">
+              <Button size={"icon"} variant={"destructive"}>
+                <Trash />
+              </Button>
+              <ProcessTemplateStageFieldUpdateDialog
+                fieldId={id}
+                stageId={stageId}
+                templateId={templateId}
+              />
+              <CFormField
+                control={control}
+                name={`field.${i}`}
+                label={label}
+                description={description}
+                render={(props) => (
+                  <Input placeholder={placeholder} {...props} />
+                )}
+              />
+              <ArrowRight />
+              <div className="border rounded-md border-dashed p-4">
+                {fields?.find((item) => item.id === fieldId)?.name}
+              </div>
+            </div>
+          )
+        )}
+      </Form>
     </CCard>
   );
 };

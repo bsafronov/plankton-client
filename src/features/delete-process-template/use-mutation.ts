@@ -19,7 +19,7 @@ export const useCurrentMutation = () => {
       type: "delete",
     }),
     mutationFn: async (body) => {
-      const res = await http.delete(`/processes/templates/${body.templateId}`);
+      const res = await http.delete(`process-templates/${body.templateId}`);
       return res.data;
     },
     onSuccess: () => {

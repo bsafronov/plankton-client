@@ -21,7 +21,7 @@ export const useTemplateFieldList = (params?: Params, props?: Props) => {
     }),
     queryFn: async () => {
       const res = await http.get<ProcessTemplateField[]>(
-        "/processes/templates/fields/",
+        "process-template-fields",
         {
           params,
         }

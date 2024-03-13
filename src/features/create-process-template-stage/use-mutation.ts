@@ -20,7 +20,7 @@ export const useCurrentMutation = ({ reset, toggle }: Props) => {
       type: "create",
     }),
     mutationFn: async (body) => {
-      const res = await http.post("/processes/templates/stages/", body);
+      const res = await http.post("process-template-stages", body);
       return res.data;
     },
     onSuccess: (stage) => {

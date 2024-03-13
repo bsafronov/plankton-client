@@ -29,7 +29,7 @@ export const useCurrentMutation = ({ reset, toggle }: Props) => {
       type: "create",
     }),
     mutationFn: async (body) => {
-      const res = await http.post("/processes/templates/stages/fields/", body);
+      const res = await http.post("process-template-stage-fields", body);
       return res.data;
     },
     onSuccess: (item) => {

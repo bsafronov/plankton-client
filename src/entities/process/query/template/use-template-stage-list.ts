@@ -20,7 +20,7 @@ export const useTemplateStageList = (params?: Params, props?: Props) => {
       params,
     }),
     queryFn: async () => {
-      const res = await http.get("/processes/templates/stages/", {
+      const res = await http.get("process-template-stages", {
         params,
       });
       return res.data;

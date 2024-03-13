@@ -21,7 +21,7 @@ export const useTemplateStageFieldList = (params?: Params, props?: Props) => {
       params,
     }),
     queryFn: async () => {
-      const res = await http.get("/processes/templates/stages/fields/", {
+      const res = await http.get("process-template-stage-fields", {
         params,
       });
       return res.data;

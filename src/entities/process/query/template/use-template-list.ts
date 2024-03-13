@@ -15,7 +15,7 @@ export const useTemplateList = (params?: Params, props?: Props) => {
       params,
     }),
     queryFn: async () => {
-      const res = await http.get<ProcessTemplate[]>("/processes/templates/", {
+      const res = await http.get<ProcessTemplate[]>("process-templates", {
         params,
       });
       return res.data;

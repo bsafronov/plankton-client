@@ -17,7 +17,7 @@ export const useCurrentMutation = () => {
       type: "create",
     }),
     mutationFn: async (body) => {
-      const res = await http.post("/processes/templates/", body);
+      const res = await http.post("process-templates", body);
       return res.data;
     },
     onSuccess: (template) => {

@@ -23,7 +23,7 @@ export const useCurrentMutation = ({ reset, toggle }: Props) => {
       type: "update",
     }),
     mutationFn: async (body) => {
-      const res = await http.patch("/processes/templates/stages/fields/", body);
+      const res = await http.patch("/process-template-stage-fields/", body);
       return res.data;
     },
     onSuccess: (item) => {

@@ -10,7 +10,7 @@ export const useSignUpMutation = () => {
   return useMutation<SignUpRes, Error, SignUpReq>({
     mutationKey: ["auth", "sign-up"],
     mutationFn: async (input) => {
-      const { data } = await http.post<SignUpRes>("/auth/sign-up", input);
+      const { data } = await http.post<SignUpRes>("auth/sign-up", input);
       return data;
     },
     onSuccess: (data) => {

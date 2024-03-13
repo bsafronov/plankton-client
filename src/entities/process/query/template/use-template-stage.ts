@@ -20,9 +20,7 @@ export const useTemplateStage = (params: Params, props?: Props) => {
       params,
     }),
     queryFn: async () => {
-      const res = await http.get(
-        `/processes/templates/stages/${params.stageId}`
-      );
+      const res = await http.get(`process-template-stages/${params.stageId}`);
       return res.data;
     },
     ...props,

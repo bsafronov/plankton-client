@@ -14,7 +14,7 @@ export const useCurrentMutation = () => {
       type: "update",
     }),
     mutationFn: async (body) => {
-      const res = await http.patch("/processes/templates/stages", body);
+      const res = await http.patch("/process-template-stages/", body);
       return res.data;
     },
     onSuccess: (stage) => {

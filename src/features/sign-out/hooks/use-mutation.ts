@@ -9,7 +9,7 @@ export const useSignOutMutation = () => {
   return useMutation({
     mutationKey: ["auth", "sign-out"],
     mutationFn: async () => {
-      const { data } = await http.post<boolean>("/auth/sign-out");
+      const { data } = await http.post<boolean>("auth/sign-out");
       return data;
     },
     onSuccess: () => {
